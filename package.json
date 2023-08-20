@@ -1,0 +1,31 @@
+{
+  "name": "firstapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --inspect index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kain-1910/NodeJS.git"
+  },
+  "keywords": [
+    "firstapp",
+    "nodejs",
+    "nodejs"
+  ],
+  "author": "kain",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kain-1910/NodeJS/issues"
+  },
+  "homepage": "https://github.com/kain-1910/NodeJS#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
