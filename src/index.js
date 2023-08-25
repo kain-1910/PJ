@@ -1,11 +1,12 @@
-const path = require('path');  // manager paths of app
-const express = require('express');   // express --> develop web based NodeJS
-const app = express();      // return methods of express
-const port = 3000;   // network port
-const morgan = require('morgan');  // morgan --> log HTTP request on terminal
-const handlebars = require('express-handlebars'); // Template engine(handlebars) --> separate the HTML structure 
-app.use(express.static(path.join(__dirname, 'public'))); // config static files(img, video, html, css, ....) from public folder
-// app.use(morgan('combined'));  // logger HTTP request using combined format
+const path = require('path'); 
+const express = require('express');   
+const app = express();      
+const port = 3000;   
+const morgan = require('morgan');  
+const handlebars = require('express-handlebars'); 
+app.use(express.static(path.join(__dirname, 'public'))); 
+// app.use(morgan('combined'));  
+const routes = require('./routes')
 
 // in thông tin submit khi có request POST
 app.use(express.urlencoded({
@@ -20,28 +21,8 @@ app.engine('hbs', handlebars.engine({
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, '/resouces/views'));
 
-// define route of request HTTP GET and handle HTTP GET requests
-app.get('/', (req, res) => {  // req-request, res-response
-  res.render('home'); 
-});
-
-app.get('/news', (req, res) => {
-  res.render('news');
-});
-
-// Query parameters
-// Syntax: path?param1=value&param2=value&...
-// Khi truyền query param, req sẽ trả về 1 object query lưu thông tin về các param truyền vào
-app.get('/search', (req, res) => {
-  console.log(req.query);  // lấy query param
-  res.render('search');
-});
-
-// Thực hiện khi có POST request trên page search
-app.post('/search', (req, res) => {
-  // lấy dữ liệu khi POST
-  res.send(req.body);
-});
+// chuyển hướng trang và xử lí 
+routes(app);
 
 // listen connections from HTTP requests to the server
 app.listen(port, () => {
