@@ -15,7 +15,7 @@ app.use(express.urlencoded({
 app.use(express.json());
 
 // Template engine
-app.engine('hbs', handlebars.engine({
+                app.engine('hbs', handlebars.engine({
   extname:'hbs' // config extension --->(.hbs)
 }));
 app.set('view engine', 'hbs');
