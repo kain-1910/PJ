@@ -8,6 +8,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use(morgan('combined'));  
 const routes = require('./routes')
 
+// Connect to DB
+const db = require('./config/db')
+db.connect();
+
 // in thông tin submit khi có request POST
 app.use(express.urlencoded({
   extended:true
