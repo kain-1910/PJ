@@ -1,11 +1,14 @@
 const Course = require('../models/Course');
 class NewsControllers {
     // Lấy dữ liệu từ model
-    index(req, res) {
+    index(req, res, next) {
         // dùng promise
-        Course.find({})
-            .then((courses) => res.json(courses))
-            .catch((err) => res.status(400).json({ err: 'ERROR' }));
+        Course.find({}).lean()
+            .then(courses => {
+                // courses = courses.map(course => course.toObject()); // ghi đè lại dữ liệu để tránh lỗi
+                res.render('news', {courses}) // Truyền dữ liệu sang bên view để render
+            })
+            .catch(next)
 
         // res.render('news');
     }

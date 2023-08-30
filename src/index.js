@@ -6,7 +6,10 @@ const morgan = require('morgan');
 const handlebars = require('express-handlebars'); 
 app.use(express.static(path.join(__dirname, 'public'))); 
 // app.use(morgan('combined'));  
+
+// chuyển hướng trang và xử lí 
 const routes = require('./routes')
+routes(app);
 
 // Connect to DB
 const db = require('./config/db')
@@ -23,10 +26,7 @@ app.engine('hbs', handlebars.engine({
   extname:'hbs' // config extension --->(.hbs)
 }));
 app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, '/resouces/views'));
-
-// chuyển hướng trang và xử lí 
-routes(app);
+app.set('views', path.join(__dirname, 'resouces','views'));
 
 // listen connections from HTTP requests to the server
 app.listen(port, () => {

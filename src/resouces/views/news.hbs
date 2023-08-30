@@ -1,3 +1,15 @@
-<h1>
-    News
-</h1>
+<div class='row'>
+    {{#each courses}}
+        <div class='col-6 mt-4'>
+            {{! lặp qua dữ liệu }}
+            <div class='card'>
+                <img src='{{this.image}}' class='card-img-top' alt='...' />
+                <div class='card-body'>
+                    <h5 class='card-title'>{{this.name}}</h5>
+                    <p class='card-text'>{{this.decs}}</p>
+                    <a href='#' class='btn btn-primary'>Go somewhere</a>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</div>
