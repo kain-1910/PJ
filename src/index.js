@@ -6,20 +6,21 @@ const morgan = require('morgan');
 const handlebars = require('express-handlebars'); 
 app.use(express.static(path.join(__dirname, 'public'))); 
 // app.use(morgan('combined'));  
-
-// chuyển hướng trang và xử lí 
 const routes = require('./routes')
-routes(app);
+
+// in thông tin submit khi có request POST <để trước connect DB và route>
+app.use(express.urlencoded({
+  extended:true
+})); 
+app.use(express.json());
 
 // Connect to DB
 const db = require('./config/db')
 db.connect();
 
-// in thông tin submit khi có request POST
-app.use(express.urlencoded({
-  extended:true
-})); 
-app.use(express.json());
+// chuyển hướng trang và xử lí 
+routes(app);
+
 
 // Template engine
 app.engine('hbs', handlebars.engine({

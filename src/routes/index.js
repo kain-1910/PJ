@@ -1,8 +1,8 @@
 const sitesRouter = require('./sites');
-const newsRouter = require('./news')
+const coursesRouter = require('./courses')
 function routes(app) {
 
-    app.use('/news', newsRouter);
+    app.use('/courses', coursesRouter);
     // luôn đưa '/' xuống dưới cùng
     app.use('/', sitesRouter)
     
