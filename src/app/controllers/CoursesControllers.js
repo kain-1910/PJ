@@ -29,7 +29,7 @@ class CoursesControllers {
         formData.image = `https://img.youtube.com/vi/${req.body.videoId}/sddefault.jpg`; // tạo field image
         const newCourse = new Course(formData);
         newCourse.save()  // lưu 1 document vào dữ liệu mongoDB
-            .then(() => res.redirect('/')) // chuyển hướng trang web
+            .then(() => res.redirect('/me/store/courses')) // chuyển hướng trang web
             .catch(next)
     }
     // [GET] courses/:id/edit
@@ -42,6 +42,13 @@ class CoursesControllers {
     update(req, res, next) {
         Course.updateOne({ _id : req.params.id }, req.body)
             .then(() => res.redirect('/me/store/courses'))
+            .catch(next);
+        
+    }
+    // [DELETE] courses/:id
+    destroy(req, res, next) {
+        Course.deleteOne({ _id : req.params.id })
+            .then(() => res.redirect('back'))
             .catch(next);
         
     }

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const slug = require('mongoose-slug-generator'); // tạo slug
+const slug = require('mongoose-slug-updater'); // tạo slug
 mongoose.plugin(slug);
 
 // Define model of course
