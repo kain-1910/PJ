@@ -25,9 +25,8 @@ class CoursesControllers {
     // [POST] course/store -- create new course
     store(req, res, next) {
         //req.body -> ấy dữ liệu client gửi lên 
-        const formData = req.body;
-        formData.image = `https://img.youtube.com/vi/${req.body.videoId}/sddefault.jpg`; // tạo field image
-        const newCourse = new Course(formData);
+        req.body.image = `https://img.youtube.com/vi/${req.body.videoId}/sddefault.jpg`; // tạo field image
+        const newCourse = new Course(req.body);
         newCourse.save()  // lưu 1 document vào dữ liệu mongoDB
             .then(() => res.redirect('/me/store/courses')) // chuyển hướng trang web
             .catch(next)
@@ -47,7 +46,21 @@ class CoursesControllers {
     }
     // [DELETE] courses/:id
     destroy(req, res, next) {
-        Course.deleteOne({ _id : req.params.id })
+        Course.delete({ _id : req.params.id })  // soft delete
+            .then(() => res.redirect('back'))
+            .catch(next);
+        
+    }
+    // [PATCH] courses/:id/restore
+    restore(req, res, next) {
+        Course.restore({ _id : req.params.id })
+            .then(() => res.redirect('back'))
+            .catch(next);
+        
+    }
+    // [DELETE] courses/:id/force
+    forceDestroy(req, res, next) {
+        Course.deleteOne({ _id : req.params.id })  // delete in DB
             .then(() => res.redirect('back'))
             .catch(next);
         
