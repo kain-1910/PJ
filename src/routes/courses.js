@@ -6,7 +6,8 @@ const coursesControllers = require('../app/controllers/CoursesControllers');
 // trang con / :slug --> biến động
 router.get('/create', coursesControllers.createCourse);
 router.post('/store', coursesControllers.store);
-router.get('/:id/edit', coursesControllers.edit); 
+router.get('/:id/edit', coursesControllers.edit);
+router.post('/handle-form-actions', coursesControllers.handleFormActions); 
 router.put('/:id', coursesControllers.update);  
 router.delete('/:id', coursesControllers.destroy);  
 router.delete('/:id/force', coursesControllers.forceDestroy);  

@@ -65,6 +65,19 @@ class CoursesControllers {
             .catch(next);
         
     }
+    // [POST] handle-form-actions
+    handleFormActions(req, res, next) {
+        switch(req.body.action) {
+            case 'delete':
+                Course.delete({ _id :{ $in: req.body.courseIds } })  // xóa tất cả document có _id trong req.body.courseIds
+                    .then(() => res.redirect('back'))
+                    .catch(next);
+                break;
+            default:
+                res.json({message: 'Action is valid'})
+        }
+
+    }
 }
 
 module.exports = new CoursesControllers();
