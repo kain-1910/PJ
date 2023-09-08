@@ -6,3 +6,6 @@ header h1{
 .search-form {
     margin-top: 20px;
 }
+.btn.disabled {
+    pointer-events: none;
+}
