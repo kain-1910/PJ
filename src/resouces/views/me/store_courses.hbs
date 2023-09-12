@@ -15,14 +15,22 @@
         </select>
         <button class="btn btn-primary mt-4 disabled" id="btn-submit-all">Thực hiện</button>
     </div>
+
     
     <table class='table mt-4'>
         <thead>
             <tr>
                 <th></th>
                 <th scope='col'>#</th>
-                <th scope='col'>Tên khóa học</th>
-                <th scope='col' colspan='4'>Thông tin</th>
+                <th scope='col'>
+                    Tên khóa học
+                    {{!-- dùng {{{}}} để hiện thị đúng dữ liệu khi dữ liệu là code --}}
+                    {{{sortable 'name' _sort}}}
+                </th>
+                <th scope='col' colspan='4'>
+                    Thông tin
+                    {{{sortable 'decs' _sort}}}
+                </th>
 
             </tr>
         </thead>
@@ -90,7 +98,7 @@
     document.addEventListener('DOMContentLoaded', function() {
         let courseId;
         const deleteCourseBtn = document.getElementById('delete-course-btn');
-        const containerForm = document.getElementById('container-form');
+        const containerForm = $('#container-form')
         const deleteCourseForm = document.getElementById('delete-course-form');
         const checkboxAll = $('#check-all-courses');
         const checkboxCourse = $('.form-check-input');
@@ -128,9 +136,8 @@
             }
         }
         //submit form
-        containerForm.onsubmit(function(e) {
+        containerForm.on('submit',function(e) {
             const isSubmitable = !submitAllBtn.hasClass('disabled');
-            alert(1)
             if(!isSubmitable) {
                 e.preventDefault();
             }
