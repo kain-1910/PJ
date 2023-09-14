@@ -2,9 +2,8 @@ const Course = require('../models/Course');
 class MeControllers {
     // Lấy dữ liệu từ model
     storedCourses(req, res, next) {
-        let coursesQuery = res.locals.sortData;
 
-        Promise.all([coursesQuery, Course.countWithDeleted({ deleted: true }).lean()])
+        Promise.all([Course.find().sortable(req).lean(), Course.countWithDeleted({ deleted: true }).lean()])
             .then(([courses, deleteCount]) => {
                 res.render('me/store_courses', {
                     courses,
