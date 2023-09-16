@@ -15,7 +15,6 @@ module.exports =  {
             asc: 'desc',
             desc: 'asc'
         };
-
         const icon = icons[sortType];
         const type = types[sortType];
         const address = Handlebars.escapeExpression(`?_sort&column=${feild}&type=${type}`)
