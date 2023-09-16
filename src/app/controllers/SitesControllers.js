@@ -4,7 +4,6 @@ class SitesControllers {
     index(req, res) {
         res.render('home');
     }
-    
     search(req, res) {
         console.log(req.query);
         res.render('search');
