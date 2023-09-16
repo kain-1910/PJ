@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kain-1910/NodeJS.git"
+    "url": "git+https://github.com/kain-1910/PJ.git"
   },
   "keywords": [
     "firstapp",
@@ -20,9 +20,9 @@
   "author": "kain",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kain-1910/NodeJS/issues"
+    "url": "https://github.com/kain-1910/PJ/issues"
   },
-  "homepage": "https://github.com/kain-1910/NodeJS#readme",
+  "homepage": "https://github.com/kain-1910/PJ#readme",
   "dependencies": {
     "express": "^4.18.2",
     "express-handlebars": "^7.1.2",
